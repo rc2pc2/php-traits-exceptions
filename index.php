@@ -1,6 +1,13 @@
 <?php
     include_once __DIR__ . '/models/Product.php';
 
+
+    function product($number, $multiplier){
+        if ( !is_integer($multiplier) || !is_integer($number) ){
+            throw new UnexpectedValueException('Given values cannot be other than an integer ', 6672);
+        }
+        return $number * $multiplier;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +22,13 @@
         Traits:
     </h1>
     <?php
-        var_dump(new Product('name', 333.3, 16, 22));
+
+    try {
+        var_dump(product(2,'dqwdw'));
+    } catch (Exception $e) {
+        echo 'Eccezione> ' . $e->getMessage() . ' with code: '. $e->getCode();
+    }
+
     ?>
 
 

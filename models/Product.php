@@ -13,5 +13,9 @@ class Product{
         $this->price = $price;
         $this->corsia = $corsia;
         $this->scaffale = $scaffale;
+
+        if ($this->price < 0) {
+            throw new Exception('Price cannot be negative: you have entered a wrong value as price', 7823);
+        }
     }
 }
